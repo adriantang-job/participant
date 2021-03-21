@@ -7,6 +7,7 @@ require('express-async-errors');
 const errorHandler = require('./middleware/error-handler');
 const NotFoundError = require('./errors/not-found-error');
 const createParticipantRoute = require('./routes/v1/create');
+const retrieveParticipantRoute = require('./routes/v1/retrieve');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(createParticipantRoute);
+app.use(retrieveParticipantRoute);
 
 app.all('*', (req, res) => {
     throw new NotFoundError();
