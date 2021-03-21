@@ -11,7 +11,7 @@ router.post('/api/v1/participants', [
     body('refNo').notEmpty().withMessage('refNo is required'),
     body('name').notEmpty().withMessage('name is required'),
     body('dateOfBirth').notEmpty().withMessage('dateOfBirth is required')
-        .isDate({ format: 'YYYY-MM-DD', strictMode: true }).withMessage('dateOfBirth must be in format YYYY-MM-DD'),
+        .isDate({ format: 'YYYY-MM-DD', strictMode: true }).withMessage('dateOfBirth must be in the format of YYYY-MM-DD'),
     body('phone').notEmpty().withMessage('phone is required'),
     body('address').notEmpty().withMessage('address is required'),
 ], validateRequest, async (req, res) => {
