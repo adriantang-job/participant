@@ -9,12 +9,16 @@ const router = express.Router();
 
 router.patch('/api/v1/participants/:originalRefNo', [
     param('originalRefNo').notEmpty().withMessage('Reference number must be provided'),
-    body('refNo').optional().notEmpty().withMessage('refNo is required'),
-    body('name').optional().notEmpty().withMessage('name is required'),
+    body('refNo').optional().notEmpty().withMessage('refNo is required')
+        .isString().withMessage('refNo must be a string'),
+    body('name').optional().notEmpty().withMessage('name is required')
+        .isString().withMessage('name must be a string'),
     body('dateOfBirth').optional().notEmpty().withMessage('dateOfBirth is required')
         .isDate({ format: 'YYYY-MM-DD', strictMode: true }).withMessage('dateOfBirth must be in format YYYY-MM-DD'),
-    body('phone').optional().notEmpty().withMessage('phone is required'),
-    body('address').optional().notEmpty().withMessage('address is required'),
+    body('phone').optional().notEmpty().withMessage('phone is required')
+        .isString().withMessage('phone must be a string'),
+    body('address').optional().notEmpty().withMessage('address is required')
+        .isString().withMessage('address must be a string'),
 ], validateRequest, async (req, res) => {
     const originalRefNo = req.params.originalRefNo;
     const newRefNo = req.body.refNo;

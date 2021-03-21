@@ -8,12 +8,16 @@ const ConflictError = require('../../errors/conflict-error');
 const router = express.Router();
 
 router.post('/api/v1/participants', [
-    body('refNo').notEmpty().withMessage('refNo is required'),
-    body('name').notEmpty().withMessage('name is required'),
+    body('refNo').notEmpty().withMessage('refNo is required')
+        .isString().withMessage('refNo must be a string'),
+    body('name').notEmpty().withMessage('name is required')
+        .isString().withMessage('name must be a string'),
     body('dateOfBirth').notEmpty().withMessage('dateOfBirth is required')
         .isDate({ format: 'YYYY-MM-DD', strictMode: true }).withMessage('dateOfBirth must be in the format of YYYY-MM-DD'),
-    body('phone').notEmpty().withMessage('phone is required'),
-    body('address').notEmpty().withMessage('address is required'),
+    body('phone').notEmpty().withMessage('phone is required')
+        .isString().withMessage('phone must be a string'),
+    body('address').notEmpty().withMessage('address is required')
+        .isString().withMessage('address must be a string'),
 ], validateRequest, async (req, res) => {
     const { refNo, name, dateOfBirth, phone, address } = req.body;
 
