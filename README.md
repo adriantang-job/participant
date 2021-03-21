@@ -32,6 +32,9 @@ It is saved in the format of *YYYY-MM-DD*. We choose to save it as string instea
 the time portion of a date of birth is probably irrelevant. A date / time object might also complicate things like
 timezone difference which is usually not considered for date of birth.
 
+A timestamp can also be used in this case. It has the advantage of taking up less space, but is not human-readable,
+thus inconvenient for situations like debugging.
+
 #### phone *(string)*
 
 The participant phone number.
@@ -47,7 +50,7 @@ We also assume the system only takes one phone number for each participant.
 The participant address.
 
 We save the full address for convenience purposes. If later the system requires features such as postcode lookup,
-it would probably better if we split the address into line 1, line 2, postcode, town, country etc.
+it would probably be better if we split the address into line 1, line 2, postcode, town, country etc.
 
 We also assume the system only takes one address for each participant.
 
@@ -60,7 +63,7 @@ just the connection string.
 
 ### Error handling
 
-The errors are probably handled and reported by HTTP status code. Details are included in the response body error
+The errors are properly handled and reported by HTTP status code. Details are included in the response body error
 objects.
 
 More checking can be included later. For example, the system now only checks if a participant phone number is provided
@@ -113,6 +116,8 @@ container port `3000`. Thus, you can reach the landing page of the application a
 
 The application supports a HTTP REST API. The endpoints are under `/api`, so if you are running the application at
 `http://localhost:3000`, the participant creation API can be reached at `http://localhost:3000/api/v1/participants`.
+
+For now JSON is supported for request and response bodies.
 
 ### Create a new participant
 
