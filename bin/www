@@ -34,13 +34,6 @@ const { startMongoDB, stopMongoDB } = require('../db');
   server.on('listening', onListening);
 
   /**
-   * Handle process events
-   */
-
-  process.on('SIGINT', onShutdown);
-  process.on('SIGTERM', onShutdown);
-
-  /**
    * Normalize a port into a number, string, or false.
    */
   function normalizePort(val) {
@@ -95,15 +88,5 @@ const { startMongoDB, stopMongoDB } = require('../db');
         ? 'pipe ' + addr
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
-  }
-
-  /**
-   * Event listener for process shutdown request event.
-   */
-  async function onShutdown() {
-    server.close(async () => {
-      await stopMongoDB();
-      process.exit();
-    });
   }
 })();
