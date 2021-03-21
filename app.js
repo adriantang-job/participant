@@ -9,6 +9,7 @@ const NotFoundError = require('./errors/not-found-error');
 const createParticipantRoute = require('./routes/v1/create');
 const retrieveParticipantRoute = require('./routes/v1/retrieve');
 const deleteParticipantRoute = require('./routes/v1/delete');
+const updateParticipantRoute = require('./routes/v1/update');
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(createParticipantRoute);
 app.use(retrieveParticipantRoute);
 app.use(deleteParticipantRoute);
+app.use(updateParticipantRoute);
 
 app.all('*', (req, res) => {
     throw new NotFoundError();
