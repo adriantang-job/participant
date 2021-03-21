@@ -80,11 +80,16 @@ Some decisions are made for the simplicity of the current design of the system. 
 
 ## Building and running the application
 
-You can run the web application in 2 ways: NPM and Docker.
+First, clone the repository using Git.
+
+```shell
+git clone https://github.com/adriantang-job/participant.git
+```
+
+Then, navigate to the project root directory. You can run the web application in 2 ways: NPM and Docker.
 
 ### NPM
 
-1. Navigate to the project root directory.
 1. Install the dependencies of the project.
    ```shell
    npm install
@@ -98,7 +103,6 @@ The application is exposed at port `3000`. You can reach the landing page of the
 
 ### Docker
 
-1. Navigate to the project root directory.
 1. Build the docker image. You can tag the image for future reference (here we use newbeginnings/participant).
    ```shell
    docker build -t newbeginnings/participant .
