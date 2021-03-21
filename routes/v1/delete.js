@@ -12,7 +12,7 @@ router.delete('/api/v1/participants/:refNo', [
 ], validateRequest, async (req, res) => {
     const refNo = req.params.refNo;
 
-    const deletedParticipant = await Participant.findOneAndDelete({ refNo });
+    const deletedParticipant = await Participant.findOneAndDelete({ refNo }, { useFindAndModify: false });
     if (!deletedParticipant) {
         throw new NotFoundError();
     }
