@@ -15,7 +15,9 @@ describe('invalid request parameters', () => {
             .get('/api/v1/participants')
             .send()
             .expect(404);
+    });
 
+    it('returns 404 if participant with specified reference number not found', async () => {
         await request(app)
             .get('/api/v1/participants/some-non-existing-ref')
             .send()
